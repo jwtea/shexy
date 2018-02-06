@@ -164,9 +164,9 @@ Prefab:
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 33950457931076920, guid: f327924dcab854bd28edfaca9fb4ec5e, type: 2}
-    - {fileID: 64130521956472146, guid: f327924dcab854bd28edfaca9fb4ec5e, type: 2}
-    - {fileID: 23237738994831406, guid: f327924dcab854bd28edfaca9fb4ec5e, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: f327924dcab854bd28edfaca9fb4ec5e, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &743989833
@@ -214,7 +214,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 1658e044206e94d608145419d1317859, type: 2}
+  - {fileID: 2100000, guid: 9b8f54e3a598647d997e79f455a3df0b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -281,6 +281,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 6
   height: 6
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  touchedColor: {r: 1, g: 0, b: 1, a: 1}
   cellPrefab: {fileID: 114836409320849382, guid: f327924dcab854bd28edfaca9fb4ec5e,
     type: 2}
   cellLabelPrefab: {fileID: 353238691}

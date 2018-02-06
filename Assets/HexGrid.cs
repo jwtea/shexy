@@ -5,16 +5,19 @@ public class HexGrid : MonoBehaviour {
     public int width = 6;
     public int height = 6;
 
+    public Color defaultColor = Color.white;
+    public Color touchedColor = Color.magenta;
+
     public HexCell cellPrefab;
     public Text cellLabelPrefab;
     
     HexCell[] cells;
-    HexMesh hexmesh;
+    HexMesh hexMesh;
     Canvas gridCanvas;
     // On game start
     void Awake() {
         gridCanvas = GetComponentInChildren<Canvas>();
-        hexmesh = GetComponentInChildren<HexMesh>();
+        hexMesh = GetComponentInChildren<HexMesh>();
         cells = new HexCell[height * width];
         
         for (int z = 0, i = 0; z < height; z++) {
@@ -26,7 +29,7 @@ public class HexGrid : MonoBehaviour {
     //Mesh must have awoken so delay by using start which is later
     // in the lifecycle
     void Start() {
-        hexmesh.Triangulate(cells);
+        hexMesh.Triangulate(cells);
     }
 
     void CreateCell (int x, int z, int i) {
@@ -39,6 +42,7 @@ public class HexGrid : MonoBehaviour {
         cell.transform.SetParent(transform, false);
         cell.transform.localPosition = position;
         cell.coordinates = HexCoordinates.FromOffsetCoordinates(x, z);
+        cell.color = defaultColor;
         
         Text label = Instantiate<Text>(cellLabelPrefab);
         label.rectTransform.SetParent(gridCanvas.transform, false);
@@ -65,6 +69,10 @@ public class HexGrid : MonoBehaviour {
     void TouchCell(Vector3 position) {
         position = transform.InverseTransformPoint(position);
         HexCoordinates coordinates = HexCoordinates.FromPosition(position);
-        Debug.Log("Touched at: " + coordinates.ToString());
+        int index = coordinates.X + coordinates.Z * width + coordinates.Z /2 ;
+        HexCell cell = cells[index];
+        cell.color = touchedColor;
+        //@todo try working out how to not triangulate
+        hexMesh.Triangulate(cells);
     }
 }
