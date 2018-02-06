@@ -26,6 +26,36 @@ public struct HexCoordinates {
         return new HexCoordinates(x - (z / 2), z);
     }
 
+    // Identify coords for hex from position vec3
+    public static HexCoordinates FromPosition (Vector3 position) {
+        float x = position.x / (HexMetrics.innerRadius * 2f);
+        float y = -x;
+
+        float offset = position.z / (HexMetrics.outerRadius * 3f);
+        x -= offset;
+        y -= offset;
+
+        int iX = Mathf.RoundToInt(x);
+        int iY = Mathf.RoundToInt(y);
+        int iZ = Mathf.RoundToInt(-x -y);
+		if (iX + iY + iZ != 0) {
+			Debug.LogWarning("rounding error!");
+            // Reconstruct largest rounding delta 
+            float dX = Mathf.Abs(x - iX);
+            float dY = Mathf.Abs(y - iY);
+            float dZ = Mathf.Abs(-x -y - iZ);
+            // x is largest
+            if (dX > dY && dX > dZ) {
+                iX = -iY - iZ;
+            } 
+            // Y is largest
+            else if (dZ > dY) {
+                iZ = -iX - iY;
+            }
+		}
+        return new HexCoordinates(iX, iZ);
+    }
+
     public int Y {
         get {
             return -X - Z;
