@@ -45,11 +45,20 @@ public class HexMesh : MonoBehaviour {
     // Add a triangle using the hex metrics to get the vertex positions
     void Triangulate (HexDirection direction, HexCell cell) {
         Vector3 center = cell.transform.localPosition;
+        Vector3 v1 = center + HexMetrics.GetFirstSolidCorner(direction);
+        Vector3 v2 = center + HexMetrics.GetSecondSolidCorner(direction);
+
         AddTriangle(
             center,
-            center + HexMetrics.GetFirstCorner(direction),
-            center + HexMetrics.GetSecondCorner(direction)
+            v1,
+            v2
         );
+        AddTriangleColor(cell.color);
+
+        Vector3 v3 = center + HexMetrics.GetFirstCorner(direction);
+        Vector3 v4 = center + HexMetrics.GetSecondCorner(direction);
+
+        AddQuad(v1, v2, v3, v4);
 
         //Blend colors from neighbors
         //Use current cell if no neighbor in direction
@@ -57,10 +66,12 @@ public class HexMesh : MonoBehaviour {
         HexCell neighbor = cell.GetNeighbor(direction) ?? cell;
         HexCell nextNeighbor = cell.GetNeighbor(direction.Next()) ?? cell;
 
-        AddTriangleColor(
-            cell.color, 
-            (cell.color + prevNeighbor.color + neighbor.color) / 3f, 
-            (cell.color + nextNeighbor.color + neighbor.color) / 3f);
+        AddQuadColor(
+            cell.color,
+            cell.color,
+            (cell.color + prevNeighbor.color + neighbor.color) / 3f,
+            (cell.color + nextNeighbor.color + neighbor.color) / 3f
+        );
     }
     
     // Add a triangle 
@@ -76,9 +87,32 @@ public class HexMesh : MonoBehaviour {
     }
 
     // Add color to each vertex of the triangle
-    void AddTriangleColor (Color c1, Color c2, Color c3) {
+    void AddTriangleColor (Color c1) {
+        colors.Add(c1);
+        colors.Add(c1);
+        colors.Add(c1);
+    }
+
+    //Add a quad
+    void AddQuad (Vector3 v1, Vector3 v2, Vector3 v3, Vector3 v4) {
+        int vertexIndex = vertices.Count;
+        vertices.Add(v1);
+        vertices.Add(v2);
+        vertices.Add(v3);
+        vertices.Add(v4);
+        // Create two triangles of quad clockwise
+        triangles.Add(vertexIndex);
+        triangles.Add(vertexIndex + 2);
+        triangles.Add(vertexIndex + 1);
+        triangles.Add(vertexIndex + 1);
+        triangles.Add(vertexIndex + 2);
+        triangles.Add(vertexIndex + 3);
+    }
+    // Add color to quad vertices
+    void AddQuadColor(Color c1, Color c2, Color c3, Color c4) {
         colors.Add(c1);
         colors.Add(c2);
         colors.Add(c3);
+        colors.Add(c4);
     }
 }
