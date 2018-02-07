@@ -53,8 +53,14 @@ public class HexMesh : MonoBehaviour {
 
         //Blend colors from neighbors
         //Use current cell if no neighbor in direction
+        HexCell prevNeighbor = cell.GetNeighbor(direction.Previous()) ?? cell;
         HexCell neighbor = cell.GetNeighbor(direction) ?? cell;
-        AddTriangleColor(cell.color, neighbor.color, neighbor.color);
+        HexCell nextNeighbor = cell.GetNeighbor(direction.Next()) ?? cell;
+
+        AddTriangleColor(
+            cell.color, 
+            (cell.color + prevNeighbor.color + neighbor.color) / 3f, 
+            (cell.color + nextNeighbor.color + neighbor.color) / 3f);
     }
     
     // Add a triangle 
