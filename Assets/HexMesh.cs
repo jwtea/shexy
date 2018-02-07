@@ -55,8 +55,9 @@ public class HexMesh : MonoBehaviour {
         );
         AddTriangleColor(cell.color);
 
-        Vector3 v3 = center + HexMetrics.GetFirstCorner(direction);
-        Vector3 v4 = center + HexMetrics.GetSecondCorner(direction);
+        Vector3 bridge = HexMetrics.GetBridge(direction);
+        Vector3 v3 = v1 + bridge;
+        Vector3 v4 = v2 + bridge;
 
         AddQuad(v1, v2, v3, v4);
 
@@ -66,12 +67,24 @@ public class HexMesh : MonoBehaviour {
         HexCell neighbor = cell.GetNeighbor(direction) ?? cell;
         HexCell nextNeighbor = cell.GetNeighbor(direction.Next()) ?? cell;
 
-        AddQuadColor(
-            cell.color,
+        Color bridgeColor = (cell.color + neighbor.color) * 0.5f;
+
+        AddQuadColor(cell.color, bridgeColor);
+        // Fill in gaps from creating bridge
+        AddTriangle(v1, center + HexMetrics.GetFirstCorner(direction), v3);
+        AddTriangleColor(
             cell.color,
             (cell.color + prevNeighbor.color + neighbor.color) / 3f,
-            (cell.color + nextNeighbor.color + neighbor.color) / 3f
+            bridgeColor
         );
+        //Add second bridge gap fill
+        AddTriangle(v2, v4, center + HexMetrics.GetSecondCorner(direction));
+        AddTriangleColor(
+            cell.color,
+            bridgeColor,
+            (cell.color + neighbor.color + nextNeighbor.color) / 3f
+        );
+
     }
     
     // Add a triangle 
@@ -91,6 +104,13 @@ public class HexMesh : MonoBehaviour {
         colors.Add(c1);
         colors.Add(c1);
         colors.Add(c1);
+    }
+
+    // Add color to each vertex of the triangle
+    void AddTriangleColor (Color c1, Color c2, Color c3) {
+        colors.Add(c1);
+        colors.Add(c2);
+        colors.Add(c3);
     }
 
     //Add a quad
@@ -114,5 +134,12 @@ public class HexMesh : MonoBehaviour {
         colors.Add(c2);
         colors.Add(c3);
         colors.Add(c4);
+    }
+    // Variation for 2 colors
+    void AddQuadColor(Color c1, Color c2) {
+        colors.Add(c1);
+        colors.Add(c1);
+        colors.Add(c2);
+        colors.Add(c2);
     }
 }
