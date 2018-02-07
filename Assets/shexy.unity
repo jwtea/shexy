@@ -766,10 +766,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colors:
-  - {r: 0.6397059, g: 0.07055579, b: 0.07055579, a: 0}
-  - {r: 0.52252436, g: 0.1913927, b: 0.86764705, a: 0}
-  - {r: 0.8455882, g: 0.14300387, b: 0.50640965, a: 0}
-  - {r: 0.019463668, g: 0.33088237, b: 0.15047427, a: 0}
+  - {r: 0.30325475, g: 0.52205884, b: 0.44057316, a: 0}
+  - {r: 0.30147058, g: 0.024383655, b: 0.024383655, a: 0}
+  - {r: 0.7352941, g: 0.24329586, b: 0.24329586, a: 0}
+  - {r: 0.017949844, g: 0.6102941, b: 0.16909966, a: 0}
   hexGrid: {fileID: 1787013377}
 --- !u!1 &1071479395
 GameObject:
@@ -1375,6 +1375,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1552131169}
+--- !u!114 &1645503285 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114836409320849382, guid: f327924dcab854bd28edfaca9fb4ec5e,
+    type: 2}
+  m_PrefabInternal: {fileID: 527103821}
+  m_Script: {fileID: 11500000, guid: 53337aa8f7cdb4ba887c5f200c17a2d0, type: 3}
 --- !u!1 &1663610170
 GameObject:
   m_ObjectHideFlags: 0
@@ -1474,8 +1480,7 @@ MonoBehaviour:
   height: 6
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   touchedColor: {r: 1, g: 0, b: 1, a: 1}
-  cellPrefab: {fileID: 114836409320849382, guid: f327924dcab854bd28edfaca9fb4ec5e,
-    type: 2}
+  cellPrefab: {fileID: 1645503285}
   cellLabelPrefab: {fileID: 353238691}
 --- !u!4 &1787013378
 Transform:
