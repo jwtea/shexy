@@ -180,7 +180,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Toggle
+  m_Text: Wow
 --- !u!222 &119487261
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -210,7 +210,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 290821096}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.09999992}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1826958270}
@@ -220,7 +220,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.000000014901175}
+  m_AnchoredPosition: {x: 0, y: 25.050858}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &290821098
@@ -261,7 +261,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1826958271}
   toggleTransition: 1
   graphic: {fileID: 1357441708}
-  m_Group: {fileID: 0}
+  m_Group: {fileID: 1071479397}
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -323,7 +323,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.000000014901177}
+  m_AnchoredPosition: {x: 0, y: -44.1792}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &463652802
@@ -364,7 +364,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 651545123}
   toggleTransition: 1
   graphic: {fileID: 1663610172}
-  m_Group: {fileID: 0}
+  m_Group: {fileID: 1071479397}
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -389,6 +389,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114836409320849382, guid: f327924dcab854bd28edfaca9fb4ec5e,
+        type: 2}
+      propertyPath: neighbors.Array.size
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4320876752471854, guid: f327924dcab854bd28edfaca9fb4ec5e, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -646,7 +651,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Toggle
+  m_Text: Auto Gassed
 --- !u!222 &776564594
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -874,7 +879,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1097096894}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.09999992}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1838285185}
@@ -884,7 +889,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -22.101833}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1097096896
@@ -925,7 +930,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1838285186}
   toggleTransition: 1
   graphic: {fileID: 1191061302}
-  m_Group: {fileID: 0}
+  m_Group: {fileID: 1071479397}
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1284,7 +1289,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1410328852}
   toggleTransition: 1
   graphic: {fileID: 1552131171}
-  m_Group: {fileID: 0}
+  m_Group: {fileID: 1071479397}
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -2012,7 +2017,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Toggle
+  m_Text: Gass
 --- !u!222 &1954723005
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2086,7 +2091,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Toggle
+  m_Text: Wowza
 --- !u!222 &2053408621
 CanvasRenderer:
   m_ObjectHideFlags: 0
